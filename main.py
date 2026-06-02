@@ -93,5 +93,5 @@ def main():
             print("Pilihan tidak valid!")
             input("\nTekan [ENTER] untuk kembali ke menu program")
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     main()
