@@ -1,5 +1,5 @@
 from manager import LibraryManager
-from subclasses import Buku, Majalah, Jurnal, DVDFilm
+from subclasses import Buku, Majalah, Jurnal
 
 def main():
     manager = LibraryManager()
@@ -23,7 +23,6 @@ def main():
             print("1. Buku")
             print("2. Majalah")
             print("3. Jurnal")
-            print("4. DVD Film Dokumenter (Bonus Soal No 6)")
             print()
             jenis = input("Nomor yang dipilih: ")
 
@@ -71,21 +70,6 @@ def main():
                 manager.tambah_data(produk)
                 print("---------------------------------------")
                 print("Tambah Jurnal Sukses")
-
-            elif jenis == "4":
-                print("TAMBAH DATA DVD FILM")
-                print()
-                kode = input("Masukkan Kode Koleksi : ")
-                judul = input("Masukkan Judul        : ")
-                tahun = input("Masukkan Tahun Rilis  : ")
-                penerbit = input("Masukkan Distributor  : ")
-                sutradara = input("Masukkan Sutradara    : ")
-                durasi = input("Masukkan Durasi (Min) : ")
-                
-                produk = DVDFilm(kode, judul, tahun, penerbit, sutradara, durasi)
-                manager.tambah_data(produk)
-                print("---------------------------------------")
-                print("Tambah DVD Film Sukses")
 
             input("\nTekan [ENTER] untuk kembali ke menu program")
 
