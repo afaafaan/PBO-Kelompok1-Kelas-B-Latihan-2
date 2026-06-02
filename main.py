@@ -1,77 +1,112 @@
-daftar_koleksi = []
+from manager import LibraryManager
+from subclasses import Buku, Majalah, Jurnal, DVDFilm
 
-def menu():
+def main():
+    manager = LibraryManager()
 
-    global daftar_koleksi 
-    
     while True:
-        print(" ")
-        print("="*20)
+        print("=======================================")
         print("MENU PROGRAM")
-        print("-"*20)
+        print("---------------------------------------")
         print("1. Tambah data koleksi")
         print("2. Hapus data koleksi")
         print("3. Tampil semua data koleksi")
         print("4. Keluar")
+        print()
         
-        pilih = input("Nomor yang dipilih: ")
+        pilihan = input("Nomor yang dipilih: ")
 
-        if pilih == '1':
-            print("\nJENIS KOLEKSI YANG AKAN DITAMBAH")
-            print("1. Buku\n2. Majalah\n3. Jurnal")
+        if pilihan == "1":
+            print("---------------------------------------")
+            print("JENIS KOLEKSI YANG AKAN DITAMBAH")
+            print()
+            print("1. Buku")
+            print("2. Majalah")
+            print("3. Jurnal")
+            print("4. DVD Film Dokumenter (Bonus Soal No 6)")
+            print()
             jenis = input("Nomor yang dipilih: ")
-            
-            kode = input("Masukkan Kode Koleksi: ")
-            judul = input("Masukkan Judul: ")
-            tahun = input("Masukkan Tahun Terbit: ")
-            penerbit = input("Masukkan Penerbit: ")
 
-            if jenis == '1':
-                pengarang = input("Masukkan Pengarang: ")
-                daftar_koleksi.append(Buku(kode, judul, tahun, penerbit, pengarang))
-                print("Data berhasil ditambahkan")
-            
-            elif jenis == '2':
-                edisi = input("Masukkan Edisi: ")
-                daftar_koleksi.append(Majalah(kode, judul, tahun, penerbit, edisi))
-                print("Data berhasil ditambahkan")
-            
-            elif jenis == '3':
-                bidang = input("Masukkan Bidang Studi: ")
-                impact = input("Masukkan Impact Factor: ")
-                daftar_koleksi.append(Jurnal(kode, judul, tahun, penerbit, bidang, impact))
-                print("Data berhasil ditambahkan")
-            input("\nTekan [ENTER] untuk kembali ke menu")
-
-        elif pilih == '2':
-            kode_hapus = input("\nHAPUS DATA KOLEKSI\nMasukkan Kode Koleksi: ")
-            
-            ditemukan = False
-            for k in daftar_koleksi:
-                if k.kode == kode_hapus:
-                    ditemukan = True
-                    break
-            
-            if ditemukan:
-                daftar_koleksi = [k for k in daftar_koleksi if k.kode != kode_hapus]
-                print("Data sukses dihapus")
-            else:
-                print("Data tidak ditemukan")
+            print("---------------------------------------")
+            if jenis == "1":
+                print("TAMBAH DATA BUKU")
+                print()
+                kode = input("Masukkan Kode Koleksi : ")
+                judul = input("Masukkan Judul        : ")
+                tahun = input("Masukkan Tahun Terbit : ")
+                pengarang = input("Masukkan Pengarang    : ")
+                penerbit = input("Masukkan Penerbit     : ")
                 
-            input("\nTekan [ENTER] untuk kembali ke menu")
+                # Membuat objek dan memasukkannya ke database manager
+                produk = Buku(kode, judul, tahun, penerbit, pengarang)
+                manager.tambah_data(produk)
+                print("---------------------------------------")
+                print("Tambah Buku Sukses")
 
-        elif pilih == '3':
-            print("\nDATA KOLEKSI")
-            if not daftar_koleksi:
-                print("Data masih kosong silahkan diisi dulu yaa... :)")
-            for i, k in enumerate(daftar_koleksi, 1):
-                print(f"\nKoleksi {i}:")
-                print(k.info()) 
-            input("\nTekan [ENTER] untuk kembali ke menu")
+            elif jenis == "2":
+                print("TAMBAH DATA MAJALAH")
+                print()
+                kode = input("Masukkan Kode Koleksi : ")
+                judul = input("Masukkan Judul        : ")
+                tahun = input("Masukkan Tahun Terbit : ")
+                penerbit = input("Masukkan Penerbit     : ")
+                edisi = input("Masukkan Edisi        : ")
+                
+                produk = Majalah(kode, judul, tahun, penerbit, edisi)
+                manager.tambah_data(produk)
+                print("---------------------------------------")
+                print("Tambah Majalah Sukses")
 
-        elif pilih == '4':
-            print("Terimakasih dan sampai jumpa :)")
+            elif jenis == "3":
+                print("TAMBAH DATA JURNAL")
+                print()
+                kode = input("Masukkan Kode Koleksi : ")
+                judul = input("Masukkan Judul        : ")
+                tahun = input("Masukkan Tahun Terbit : ")
+                penerbit = input("Masukkan Penerbit     : ")
+                bidang = input("Masukkan Bidang Studi : ")
+                impact = input("Masukkan Impact Factor: ")
+                
+                produk = Jurnal(kode, judul, tahun, penerbit, bidang, impact)
+                manager.tambah_data(produk)
+                print("---------------------------------------")
+                print("Tambah Jurnal Sukses")
+
+            elif jenis == "4":
+                print("TAMBAH DATA DVD FILM")
+                print()
+                kode = input("Masukkan Kode Koleksi : ")
+                judul = input("Masukkan Judul        : ")
+                tahun = input("Masukkan Tahun Rilis  : ")
+                penerbit = input("Masukkan Distributor  : ")
+                sutradara = input("Masukkan Sutradara    : ")
+                durasi = input("Masukkan Durasi (Min) : ")
+                
+                produk = DVDFilm(kode, judul, tahun, penerbit, sutradara, durasi)
+                manager.tambah_data(produk)
+                print("---------------------------------------")
+                print("Tambah DVD Film Sukses")
+
+            input("\nTekan [ENTER] untuk kembali ke menu program")
+
+        elif pilihan == "2":
+            print("---------------------------------------")
+            print("HAPUS DATA KOLEKSI")
+            print()
+            kode = input("Masukkan Kode Koleksi : ")
+            manager.hapus_data(kode)
+            input("\nTekan [ENTER] untuk kembali ke menu program")
+
+        elif pilihan == "3":
+            manager.tampil_semua_data()
+            input("Tekan [ENTER] untuk kembali ke menu program")
+
+        elif pilihan == "4":
+            print("Keluar dari program. Terima kasih!")
             break
-        
-if __name__ == "__main__":
-    menu()
+        else:
+            print("Pilihan tidak valid!")
+            input("\nTekan [ENTER] untuk kembali ke menu program")
+
+if _name_ == "_main_":
+    main()
