@@ -1,6 +1,6 @@
 from koleksi_base import Koleksi
 class Buku(Koleksi):
-    def _init_(self, kode, judul, tahun_terbit, penerbit, pengarang):
+    def __init__(self, kode, judul, tahun_terbit, penerbit, pengarang):
         super()._init_(kode, judul, tahun_terbit, penerbit)
         self.pengarang = pengarang
 
@@ -11,7 +11,7 @@ class Buku(Koleksi):
 
 
 class Majalah(Koleksi):
-    def _init_(self, kode, judul, tahun_terbit, penerbit, edisi):
+    def __init__(self, kode, judul, tahun_terbit, penerbit, edisi):
         super()._init_(kode, judul, tahun_terbit, penerbit)
         self.edisi = edisi
 
