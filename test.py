@@ -11,7 +11,8 @@ class TestLibrarySystem(unittest.TestCase):
         self.manager = LibraryManager()
         self.buku_test = Buku("B01", "Laskar Pelangi", "2005", "Bentang Pustaka", "Andrea Hirata")
         self.majalah_test = Majalah("M01", "Bobo", "2023", "Kompas Gramedia", "Edisi 50")
-
+        self.jurnal_test = Jurnal("J01", "Pengaruh Teknologi terhadap Pendidikan", "2023", "Universitas Indonesia", "Pendidikan", 2.5)
+        
     def test_tambah_data_sukses(self):
         """Memastikan data baru bisa ditambahkan ke dalam sistem"""
         # Awalnya data kosong
