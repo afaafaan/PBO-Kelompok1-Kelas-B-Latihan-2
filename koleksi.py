@@ -1,3 +1,4 @@
+from koleksi_base import Koleksi
 class Buku(Koleksi):
     def _init_(self, kode, judul, tahun_terbit, penerbit, pengarang):
         super()._init_(kode, judul, tahun_terbit, penerbit)
