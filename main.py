@@ -1,5 +1,5 @@
 from manager import LibraryManager
-from subclasses import Buku, Majalah, Jurnal
+from koleksi import Buku, Majalah, Jurnal
 
 def main():
     manager = LibraryManager()
