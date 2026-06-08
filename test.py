@@ -2,7 +2,7 @@ import unittest
 # Mengimport file utama yang dibuat oleh anggota kelompok lain
 from manager import LibraryManager
 from koleksi import Buku, Majalah
-from Kelas_jurnal import Jurnal
+from Kelas_Jurnal import Jurnal
 
 class TestLibrarySystem(unittest.TestCase):
     
